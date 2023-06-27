@@ -7,61 +7,33 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  background-color: var(--accent-bg-color);
-  color: var(--second-text-color);
-
-  margin-right: 5px;
-  padding: 15px;
-}
-
-@media screen and (min-width: 768px) {
-  .icon {
-    margin-right: 20px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .icon {
-    margin-right: 30px;
-  }
-}
-
-.number {
-  font-weight: 700;
-  margin-right: 5px;
-}
-
-@media screen and (min-width: 768px) {
-  .number {
-    margin-right: 20px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .number {
-    margin-right: 30px;
-  }
+  color: #434455;
+  padding: 5px;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   width: 30px;
   height: 30px;
-  padding: 10px;
+  padding: 5px;
 
   border: none;
-  background-color: #2b2b2b;
-  color: var(--second-text-color);
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #2b2b2b;
 
   cursor: pointer;
-  transition: background-color var(--main-hover-animation);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:hover,
 .button:focus {
-  background-color: var(--accent-bg-color);
+  background-color: rgb(233, 21, 21);
+}
+
+.number {
+  font-weight: 400;
+  margin-right: 5px;
 }

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Contact from '../Contact';
+import Contact from '../Contact/Contact';
 import css from './ContactList.module.css';
 
 function ContactList({ contacts, onDeleteContact }) {
@@ -26,7 +26,7 @@ ContactList.prototype = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
+      number: PropTypes.number.isRequired,
     })
   ).isRequired,
   onDeleteContact: PropTypes.func.isRequired,

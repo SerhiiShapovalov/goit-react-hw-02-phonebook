@@ -1,10 +1,8 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-import { Report } from 'notiflix/build/notiflix-report-aio';
-import ContactForm from './ContactForm';
-import ContactList from './ContactList';
-import Filter from './Filter';
-import Message from './Message';
+import ContactForm from './ContactForm/ContactForm';
+import ContactList from './ContactList/ContactList';
+import Filter from './Filter/Filter';
 import css from './App.module.css';
 
 class App extends Component {
@@ -18,11 +16,7 @@ class App extends Component {
     const newContact = { id: nanoid(), name, number };
 
     contacts.some(contact => contact.name === name)
-      ? Report.warning(
-          `${name}`,
-          'This user is already in the contact list.',
-          'OK'
-        )
+      ? window.alert(`${name} is already in the contact list.`)
       : this.setState(({ contacts }) => ({
           contacts: [newContact, ...contacts],
         }));
@@ -52,23 +46,20 @@ class App extends Component {
     const changeFilter = this.changeFilter;
     const filtredContacts = this.filtredContacts();
     const deleteContact = this.deleteContact;
-    const length = this.state.contacts.length;
 
     return (
       <div className={css.container}>
-        <h1 className={css.title}>Phonebook </h1>
-        <ContactForm onSubmit={addContact} />
+        <div className={css.wrapper}>
+          <h1 className={css.title}>Phonebook </h1>
+          <ContactForm onSubmit={addContact} />
 
-        <h2 className={css.subtitle}>Contacts</h2>
-        <Filter filter={filter} changeFilter={changeFilter} />
-        {length > 0 ? (
+          <h2 className={css.subtitle}>Contacts</h2>
+          <Filter filter={filter} changeFilter={changeFilter} />
           <ContactList
             contacts={filtredContacts}
             onDeleteContact={deleteContact}
           />
-        ) : (
-          <Message text="Contact list is empty." />
-        )}
+        </div>
       </div>
     );
   }
