@@ -15,11 +15,18 @@ class App extends Component {
     const { contacts } = this.state;
     const newContact = { id: nanoid(), name, number };
 
-    contacts.some(contact => contact.name === name)
-      ? window.alert(`${name} is already in the contact list.`)
-      : this.setState(({ contacts }) => ({
-          contacts: [newContact, ...contacts],
-        }));
+    if (
+      contacts.some(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      window.alert(`${name} is already in the contact list.`);
+      return;
+    } else {
+      this.setState(({ contacts }) => ({
+        contacts: [newContact, ...contacts],
+      }));
+    }
   };
 
   deleteContact = contactId => {
